@@ -1,7 +1,6 @@
 package com.contacts.service;
 
 import com.contacts.model.User;
-
 import java.util.Optional;
 
 public interface UserService {

@@ -28,12 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/contacts/**").authenticated()
-                .antMatchers(HttpMethod.POST,"/registration").permitAll()
-                .antMatchers(HttpMethod.GET,"/").permitAll()
+                .antMatchers(HttpMethod.GET,"/**").authenticated()
                 .and()
                 .formLogin()
                 .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
                 .and()
                 .httpBasic()
                 .and()

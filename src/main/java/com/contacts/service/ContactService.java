@@ -1,7 +1,7 @@
 package com.contacts.service;
 
 import com.contacts.model.Contact;
-
+import com.contacts.model.dto.ContactRequestDto;
 import java.util.List;
 
 public interface ContactService {
@@ -13,5 +13,7 @@ public interface ContactService {
 
     List<Contact> getAll();
 
-    Contact update(Contact contact);
+    Contact update(Contact contact, ContactRequestDto dto);
+
+    Contact delete(Contact contact);
 }

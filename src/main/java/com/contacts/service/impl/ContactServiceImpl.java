@@ -2,10 +2,10 @@ package com.contacts.service.impl;
 
 import com.contacts.dao.ContactDao;
 import com.contacts.model.Contact;
+import com.contacts.model.dto.ContactRequestDto;
 import com.contacts.service.ContactService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -36,7 +36,14 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact update(Contact contact) {
+    public Contact update(Contact contact, ContactRequestDto dto) {
+        contact.setEmail(dto.getEmail());
+        contact.setName(dto.getName());
         return contactDao.update(contact);
+    }
+
+    @Override
+    public Contact delete(Contact contact) {
+        return contactDao.delete(contact);
     }
 }

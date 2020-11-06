@@ -1,7 +1,6 @@
 package com.contacts.dao;
 
 import com.contacts.model.Contact;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -15,4 +14,6 @@ public interface ContactDao {
     List<Contact> getAll();
 
     Contact update(Contact contact);
+
+    Contact delete(Contact contact);
 }

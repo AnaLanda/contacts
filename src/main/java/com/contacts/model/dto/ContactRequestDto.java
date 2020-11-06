@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class ContactRequestDto {
     private String email;
-    private String fullName;
-    private Byte[] image;
+    private String name;
 }

@@ -11,16 +11,14 @@ public class ContactMapper {
         ContactResponseDto contactResponseDto = new ContactResponseDto();
         contactResponseDto.setId(contact.getId());
         contactResponseDto.setEmail(contact.getEmail());
-        contactResponseDto.setFullName(contact.getFullName());
-        contactResponseDto.setImage(contact.getImage());
+        contactResponseDto.setName(contact.getName());
         return contactResponseDto;
     }
 
     public Contact mapToContact(ContactRequestDto contactRequestDto) {
         Contact contact = new Contact();
         contact.setEmail(contactRequestDto.getEmail());
-        contact.setFullName(contactRequestDto.getFullName());
-        contact.setImage(contactRequestDto.getImage());
+        contact.setName(contactRequestDto.getName());
         return contact;
     }
 }

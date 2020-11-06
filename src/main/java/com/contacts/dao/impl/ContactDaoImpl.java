@@ -3,15 +3,14 @@ package com.contacts.dao.impl;
 import com.contacts.dao.ContactDao;
 import com.contacts.exception.DataProcessingException;
 import com.contacts.model.Contact;
+import java.util.List;
+import java.util.Optional;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class ContactDaoImpl implements ContactDao {
@@ -100,6 +99,31 @@ public class ContactDaoImpl implements ContactDao {
                 transaction.rollback();
             }
             throw new DataProcessingException("Failed to update the contact "
+                    + contact, e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public Contact delete(Contact contact) {
+        log.info("Trying to delete the contact " + contact);
+        Transaction transaction = null;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.remove(contact);
+            transaction.commit();
+            log.info("Successfully deleted the contact " + contact);
+            return contact;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw new DataProcessingException("Failed to delete the contact "
                     + contact, e);
         } finally {
             if (session != null) {

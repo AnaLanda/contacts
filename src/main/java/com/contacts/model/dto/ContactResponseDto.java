@@ -6,6 +6,5 @@ import lombok.Data;
 public class ContactResponseDto {
     private Long id;
     private String email;
-    private String fullName;
-    private Byte[] image;
+    private String name;
 }

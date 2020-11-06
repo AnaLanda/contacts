@@ -3,14 +3,13 @@ package com.contacts.dao.impl;
 import com.contacts.dao.RoleDao;
 import com.contacts.exception.DataProcessingException;
 import com.contacts.model.Role;
+import java.util.Optional;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public class RoleDaoImpl implements RoleDao {

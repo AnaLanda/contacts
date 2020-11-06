@@ -3,11 +3,10 @@ package com.contacts.security;
 import com.contacts.model.Role;
 import com.contacts.model.User;
 import com.contacts.service.UserService;
+import java.util.Set;
 import org.apache.log4j.Logger;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Set;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
